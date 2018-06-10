@@ -36,6 +36,7 @@ bool Player::CanJump() {
     return 1;
 }
 
+bool jumpState = false;
 void World::Tick(float f)
 {
     // see libGameLogic.h for the class/object definitions
@@ -53,5 +54,7 @@ void World::Tick(float f)
         printf("velo: %.2f / %.2f / %.2f\n", vel.x, vel.y, vel.z);
         player->SetPosition(frozen_pos);
         //player->SetVelocity(Vector3(0,0,60));
+        player->SetJumpState(jumpState);
+        jumpState = !jumpState;
     }
 }
